@@ -3,7 +3,6 @@ import { Title, RestaurantCard, Cover, Info, Address, LodgingImage, ClosedWarnin
 import { SvgXml } from 'react-native-svg';
 import Star from '../../../assets/star';
 import Open from '../../../assets/open';
-import { Text, Image } from 'react-native'
 
 export const RestaurantInfo = (props) => {
   const {
@@ -15,7 +14,8 @@ export const RestaurantInfo = (props) => {
     address = 'Some random 100 address',
     isOpenNow = true,
     rating = 4,
-    isClosedTemporarily
+    isClosedTemporarily,
+    placeId
   } = props;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)))
@@ -26,7 +26,7 @@ export const RestaurantInfo = (props) => {
         <Title>{name}</Title>
         <Rating>
           <RatingView>
-            {ratingArray.map((element, i) => <SvgXml key={ratingArray[i]} xml={Star} width={20} height={20} />)}
+            {ratingArray.map((element, i) => <SvgXml key={`star-${placeId}-${i}`} xml={Star} width={20} height={20} />)}
           </RatingView>
           <RatingView>
             {isOpenNow && !isClosedTemporarily ? <SvgXml xml={Open} width={20} height={20} /> : null}

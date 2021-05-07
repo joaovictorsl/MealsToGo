@@ -1,10 +1,10 @@
 import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 import React, { Fragment, useContext } from 'react';
 import { FlatList } from 'react-native';
-import { Searchbar } from 'react-native-paper';
 import { RestaurantInfo } from '../components/restaurant-card';
-import { SafeArea, Container, SearchbarView, CardView, ActivityIndicator } from '../styles/styles';
-import { RestaurantsContext } from '../services/restaurants/restaurants.context'
+import { SafeArea, Container, CardView, ActivityIndicator } from '../styles/styles';
+import { RestaurantsContext } from '../services/restaurants/restaurants.context';
+import { Search } from '../components/search'
 
 
 const HomeScreen = () => {
@@ -14,9 +14,7 @@ const HomeScreen = () => {
     <Fragment>
       <SafeArea>
         <Container>
-          <SearchbarView>
-            <Searchbar placeholder='Search...' />
-          </SearchbarView>
+          <Search />
           <CardView>
             {isLoading
               ?
@@ -31,7 +29,8 @@ const HomeScreen = () => {
                     address={item.vicinity}
                     isOpenNow={item.isOpenNow}
                     rating={item.rating}
-                    isClosedTemporarily={item.isClosedTemporarily} />)
+                    isClosedTemporarily={item.isClosedTemporarily}
+                    photos={item.photos} />)
                 }}
                 keyExtractor={(item) => item.name}
                 contentContainerStyle={{ padding: 5 }} />

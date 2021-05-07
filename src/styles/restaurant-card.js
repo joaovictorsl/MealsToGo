@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 export const Address = styled.Text`
 font-family: ${props => props.theme.fonts.body};
 font-size: ${props => props.theme.fontSizes.body};
-color: ${props => props.theme.colors.ui.primary}
+color: ${props => props.theme.colors.ui.primary};
+max-width: 170px
 `;
 export const ClosedWarning = styled.Text`
 font-family: ${props => props.theme.fonts.body};

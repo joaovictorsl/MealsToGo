@@ -10,6 +10,7 @@ import SettingsScreen from './src/screens/settings';
 import MapScreen from './src/screens/map';
 import { Ionicons } from '@expo/vector-icons';
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context'
+import { LocationContextProvider } from './src/services/location/location.context'
 
 const Tab = createBottomTabNavigator();
 let iconName;
@@ -55,20 +56,22 @@ export default function App() {
   return (
     <Fragment>
       <ThemeProvider theme={theme}>
-        <RestaurantsContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator
-              screenOptions={atmScreen}
-              tabBarOptions={{
-                showLabel: false,
-              }}
-            >
-              <Tab.Screen name="Restaurants" component={HomeScreen} />
-              <Tab.Screen name="Map" component={MapScreen} />
-              <Tab.Screen name="Settings" component={SettingsScreen} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator
+                screenOptions={atmScreen}
+                tabBarOptions={{
+                  showLabel: false,
+                }}
+              >
+                <Tab.Screen name="Restaurants" component={HomeScreen} />
+                <Tab.Screen name="Map" component={MapScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
     </Fragment>
   );
