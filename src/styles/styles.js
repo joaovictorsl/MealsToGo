@@ -13,7 +13,7 @@ ${Platform.OS === 'android' ? `margin-top: ${StatusBar.currentHeight}px;` : null
 `
 export const SearchbarView = styled.View`
 padding: ${props => props.theme.sizes[0]};
-width: 100%
+width: 100%;
 `
 export const CardView = styled(View)`
 padding: ${props => props.theme.sizes[0]};
